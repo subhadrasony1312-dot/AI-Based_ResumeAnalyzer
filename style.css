@@ -7,7 +7,7 @@
 
 body {
     /* Using Poppins (from your HTML) instead of Cursive for better mobile readability */
-    font-family: cursive; 
+    font-family: bold; 
     min-height: 100vh;
     background: linear-gradient(-45deg, #a7ebf2, #54acbf, #26658c, #023859);
     background-size: 400% 400%;
@@ -57,7 +57,6 @@ body {
 
 .glass-container p {
     font-size: 25px;
-    font-family: cursive;
     margin-bottom: 2rem;
     line-height: 1.6;
 }
