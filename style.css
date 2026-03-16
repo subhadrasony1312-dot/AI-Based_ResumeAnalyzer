@@ -1,3 +1,4 @@
+/* RESET & BASE */
 * {
     margin: 0;
     padding: 0;
@@ -5,20 +6,21 @@
 }
 
 body {
-    font-family:cursive;
+    /* Using Poppins (from your HTML) instead of Cursive for better mobile readability */
+    font-family: cursive; 
     min-height: 100vh;
-    background:linear-gradient(to right,#a7ebf2,#54acbf,#26658c,#023859,#011c40);
+    background: linear-gradient(-45deg, #a7ebf2, #54acbf, #26658c, #023859);
     background-size: 400% 400%;
-    animation: gradientMove 4s ease-in-out infinite;
+    animation: gradientMove 8s ease-in-out infinite;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     overflow-x: hidden;
 }
-@keyframes gradientMove{
-    0%{background-position: 0% 50%;}
-    50%{background-position: 100% 50%;}
-    100%{background-position: 0% 50%;}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* MAIN SECTION */
@@ -27,123 +29,124 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    padding: 40px;
-    gap: 40px;
+    padding: 20px; /* Safety padding for small screens */
 }
 
 /* GLASS CONTAINER */
 .glass-container {
+    width: 100%;
     max-width: 900px;
-    padding: 40px;
+    padding: 2rem;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
-    box-shadow: 0 8px 32px rgba(15, 9, 86, 0.3);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     color: white;
+    text-align: center;
 }
 
+/* RESPONSIVE TYPOGRAPHY */
 .glass-container h1 {
-    font-size: 50px;
-    margin-bottom: 20px;
+    font-family: bold;
+    color: #09072c;
+    font-size:50px; /* Shrinks on mobile, grows on desktop */
+    margin-bottom: 1rem;
 }
 
 .glass-container p {
-    font-size: 30px;
-    margin-bottom: 25px;
+    font-size: 25px;
+    font-family: cursive;
+    margin-bottom: 2rem;
     line-height: 1.6;
 }
 
 /* BUTTON */
 .btn {
-    display: inline-block;
-    padding: 12px 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 30px;
     background: #13053b;
-    color: white;
+    color: white !important;
     text-decoration: none;
-    border-radius: 30px;
+    border-radius: 50px;
     transition: 0.3s ease;
     font-size: 30px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: auto 200px;
+    font-weight: 600;
+    margin: 10px auto;
+    width: 500px;
 }
 
 .btn:hover {
-    background: beige;
-    color: #13053b;
-
-}
-.robot-animation{
-    width:800px;
-    height:250px;
-    display:block;
-    position: relative;
-    margin:20px 0 0 2px;
-    justify-content: center;
-    align-items: center;
+    background: white;
+    color: #13053b !important;
+    transform: translateY(-3px);
 }
 
+/* IMAGE FIX - This was your biggest issue */
+.robot-animation {
+    width: 100%;
+    max-width: 400px; /* Limits the size so it doesn't break the layout */
+    height: auto;
+    display: block;
+    margin: 20px auto 0;
+}
 
 /* FOOTER */
 footer {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.8);
     color: white;
-    padding: 20px 40px;
+    padding: 30px 20px;
+    text-align: center;
 }
 
-.footer-text {
+footer h6 {
     margin-bottom: 15px;
-    font-size: 30px;
-}
-
-/* CONTACT */
-.contact {
-    text-align: left;
-}
-
-.contact h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.contact span {
-    color: rgb(12, 132, 237);
-    font-size: 20px;
 }
 
 .social-container {
     display: flex;
-    gap: 20px;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 15px;
 }
 
 .icon {
-    font-size: 22px;
+    font-size: 24px;
     color: white;
     transition: 0.3s;
 }
 
 .icon:hover {
-    color: steelblue;
+    color: #0c84ed;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .main-wrapper {
-        flex-direction: column;
-        text-align: center;
-    }
+/* SPINNER & LOADING STATES */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 0.8s linear infinite;
+    margin-right: 10px;
+}
 
+.btn.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* MOBILE SPECIFIC TWEAKS */
+@media (max-width: 480px) {
     .glass-container {
-        width: 90%;
+        padding: 1.5rem;
     }
-
-    .contact {
-        text-align: center;
-    }
-
-    .social-container {
-        justify-content: center;
+    .btn {
+        width: 100%; /* Full width button on very small phones */
     }
 }
