@@ -1,4 +1,4 @@
 # AI-Based_ResumeAnalyzer
-live : https://ai-based-resume-analyzer-7dt8.onrender.com
+live : https://jacketlike-frightenedly-lili.ngrok-free.dev
 <br>
 Developed & Deployed By : SUBHADRA BISWAL
